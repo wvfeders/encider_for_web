@@ -5,15 +5,18 @@ get '/' do
 end
 
 post '/validate' do
-
-	redirect '/validate?message=' + params[:a_message] 
-	redirect '&code=' + params[:code]
+	# message = params[:a_message]
+	# code = params[:a_code]
+	
+	# puts message, code
+	redirect '/validate1?message=' + params[:a_message] + '&code=' + params[:a_code]
  	 #assigns the value in 'a_number' to 'number' 
+	
 	
  
 end
  
- get '/validate' do
+ get '/validate1' do
 
  @code_decode = params[:code] #creates a variable from the number input
  @message = params[:message] #creates a string aray containing the isbn number
@@ -32,8 +35,10 @@ end
 # letter_offset = Integer(gets.chomp) #user has to provide the number of letters to offset to create or decipher the code
 
 if @code_decode == "decode"
-	letter_offset = -1 * $letter_count #the sign of the letter_offset value is reversed if program is decoding 
+	letter_offset = -1 * @letter_count #the sign of the letter_offset value is reversed if program is decoding 
+#	@result = "Your decoded message is"
 else letter_offset = @letter_count
+#	@result = "Your encoded message is"
  end	
 
 # puts code_type, "Code will be offset #{letter_offset} letters" #checks code_type and offset
@@ -72,7 +77,12 @@ end
  encoded_letter = hash3[coded_letter_number] #retrieves a letter from hash3 depending on the value of coded_letter_number 
 # #print letter, " ", encoded_letter, " " #prints initial message and spaces and encoded letter vertically
 # #puts
-
+if @code_decode == "decode"	
+	@input = "Your encoded message is"
+	@result = "Your decoded message is"
+else @result = "Your encoded message is"
+	@input = "Your message is"
+ end
 
 @inmessage = @inmessage.push(letter) #collects the input letters into ana array
 @out_message = @out_message.push(encoded_letter) #collects the utput leters into an array

@@ -6,28 +6,20 @@
  
 
 <form method="post" action="validate">  <!-- sets up the form to collect code type-->
- 
-Enter "encode" or "decode" below (without the quotes).
-    <input type="text"  name="code">
+
+Click whether you want to encode or decode your message.<br> <!-- creates radio buttons to determine intent to encode or decode-->
+  <input type="radio" name="a_code" value="encode"> encode <br> 
+  <input type="radio" name="a_code" value="decode"> decode <br> 
+
+
 
      <br>
  <br>
 
-What is your message?<br>
+Type your message in lower case letters without punctuation?<br>
     <input type="text"  name="a_message">
 
     <input type="submit">
 
 </form>
 
- <!--Asks the user for input-->
-<!-- <form method="post" action="validate">  <! sets up the form to collect code type-->
-<!--    <input type="text"  name="message">
-
-    <input type="submit">
-</form>
-
-<html>
-<body>
-
-    <br>
