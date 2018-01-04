@@ -5,10 +5,7 @@ get '/' do
 end
 
 post '/validate' do
-	# message = params[:a_message]
-	# code = params[:a_code]
-	
-	# puts message, code
+
 	redirect '/validate1?message=' + params[:a_message] + '&code=' + params[:a_code]
  	 #assigns the value in 'a_number' to 'number' 
 	
@@ -27,27 +24,15 @@ end
 
 @inmessage = Array.new #establishes the inmessage aray
 @out_message = Array.new #establishes the out_message array
-#split_letters.count #counts total number of letters and spaces
-# puts "Do you want to encode or decode?"
-# code_type = gets.chomp  #User has to input whether the program should encode or decode
-
-# puts "What is the number of letters used to offset the message (i. e. 5,8,13 etc)?"
-# letter_offset = Integer(gets.chomp) #user has to provide the number of letters to offset to create or decipher the code
 
 if @code_decode == "decode"
 	letter_offset = -1 * @letter_count #the sign of the letter_offset value is reversed if program is decoding 
-#	@result = "Your decoded message is"
+
 else letter_offset = @letter_count
-#	@result = "Your encoded message is"
+
  end	
 
-# puts code_type, "Code will be offset #{letter_offset} letters" #checks code_type and offset
 
-
-# puts "Type your message in lower case letters without punctuation: " #code only works with lower case
-# message = gets.chomp 
-# split_letters = message.split('') #divides message into individual letters and spaces
-# #p split_letters.count #counts total number of letters and spaces
  count=0
  (@split_letters.count).times do #loops program the number of letters and spaces
 
@@ -75,35 +60,21 @@ end
  hash3 = hash1.invert #hash3 inverts hash1 so we can extract a letter from a number input
 
  encoded_letter = hash3[coded_letter_number] #retrieves a letter from hash3 depending on the value of coded_letter_number 
-# #print letter, " ", encoded_letter, " " #prints initial message and spaces and encoded letter vertically
-# #puts
-if @code_decode == "decode"	
-	@input = "Your encoded message is"
-	@result = "Your decoded message is"
-else @result = "Your encoded message is"
-	@input = "Your message is"
+
+if @code_decode == "decode"	 #Theses lines determine the messages that will be output depending on whether encoding or decoding
+	@input = "Your encoded message is:"
+	@result = "Your decoded message is:"
+else @result = "Your encoded message is:"
+	@input = "Your message is:"
  end
 
-@inmessage = @inmessage.push(letter) #collects the input letters into ana array
+@inmessage = @inmessage.push(letter) #collects the input letters into an array
 @out_message = @out_message.push(encoded_letter) #collects the utput leters into an array
-@insmessage = @inmessage.join
-@outsmessage = @out_message.join
+@insmessage = @inmessage.join #joins letters together from an array into a single word
+@outsmessage = @out_message.join #joins letters together from an array into a single word
 end
 erb :message
 	
-# @inmessasge = = params[:sandwich]    
-# @topping = params[:topping]
 
-# @side = params[:side]
-# #puts message
-# #end new code 121117
 end
 
-# #print inmessage.join
-# puts
-# puts "Your input message is:"
-# print inmessage.join #prints the concatenated letters of inmessage array
-# puts "\n\n"
-# puts "Your output message is:"
-# print  out_message.join #prints the concatenaeted letters of the out_message array
-# puts "\n\n "
